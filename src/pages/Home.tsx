@@ -130,19 +130,6 @@ export default function Home() {
         </a>
       </section>
 
-      {/* ---- STATS BAR ---- */}
-      <section className="stats-bar">
-        <div className="container stats-bar__inner">
-          <StatCounter value={15} label="Faculty Members" suffix="+" />
-          <div className="stats-bar__divider" />
-          <StatCounter value={200} label="Students Enrolled" suffix="+" />
-          <div className="stats-bar__divider" />
-          <StatCounter value={5} label="Innovation Labs" suffix="" />
-          <div className="stats-bar__divider" />
-          <StatCounter value={30} label="Industry Partners" suffix="+" />
-        </div>
-      </section>
-
       {/* ---- ABOUT ---- */}
       <section className="about section" id="about">
         <div className="container about__grid">
