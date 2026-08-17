@@ -3,23 +3,6 @@ import { Link } from 'react-router-dom'
 import deptBuilding from '../assets/dept-building.jpg'
 import './Home.css'
 
-/* ---- Animated counter hook ---- */
-function useCountUp(target: number, duration = 1800, start = false) {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    if (!start) return
-    let startTime: number | null = null
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      setCount(Math.floor(progress * target))
-      if (progress < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [start, target, duration])
-  return count
-}
-
 /* ---- Intersection observer hook ---- */
 function useInView(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null)
@@ -35,18 +18,6 @@ function useInView(threshold = 0.2) {
     return () => observer.disconnect()
   }, [threshold])
   return { ref, inView }
-}
-
-/* ---- Stat counter component ---- */
-function StatCounter({ value, label, suffix = '' }: { value: number; label: string; suffix?: string }) {
-  const { ref, inView } = useInView(0.3)
-  const count = useCountUp(value, 1600, inView)
-  return (
-    <div className="stat" ref={ref}>
-      <span className="stat__number">{count}{suffix}</span>
-      <span className="stat__label">{label}</span>
-    </div>
-  )
 }
 
 /* ---- Objective icon map ---- */
